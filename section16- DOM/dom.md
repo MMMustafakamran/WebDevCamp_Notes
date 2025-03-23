@@ -340,3 +340,298 @@ Below are detailed notes covering all the topics discussed in the transcript abo
 - **Practice Challenge:** Reinforces learning by manipulating a live web page via the console.
 
 These notes should serve as a comprehensive guide to understanding the DOM and how JavaScript can be used to interact with and manipulate it.
+
+# JavaScript DOM Selection Methods
+
+## **1. Introduction to DOM Selection**
+
+- JavaScript allows us to select HTML elements and manipulate them dynamically.
+- Various methods exist for selecting elements within the Document Object Model (DOM).
+
+## **2. Selecting Elements by Tag Name**
+
+### **getElementsByTagName()**
+
+- This method selects elements based on their **tag name** (e.g., `<li>`, `<p>`, `<h1>`).
+
+- Returns a **collection (array-like structure)** of all matching elements.
+
+- Example:
+
+  ```javascript
+  let listItems = document.getElementsByTagName("li");
+  console.log(listItems); // Returns all <li> elements
+  ```
+
+- Since the method returns an array-like object, we need to **specify the index** to manipulate a particular element.
+
+- Example (Changing the color of the third `<li>` element):
+
+  ```javascript
+  listItems[2].style.color = "purple";
+  ```
+
+- If we try `listItems.style.color = "purple";`, an error occurs because we are trying to set a property on an array instead of a single element.
+
+- We can use 
+
+  ```
+  .length
+  ```
+
+   to determine the number of selected elements:
+
+  ```javascript
+  console.log(listItems.length); // Outputs: 3
+  ```
+
+## **3. Selecting Elements by Class Name**
+
+### **getElementsByClassName()**
+
+- Selects elements using their **class name**.
+
+- Returns a **collection (array-like structure)**, even if only one element matches.
+
+- Example:
+
+  ```javascript
+  let buttons = document.getElementsByClassName("btn");
+  ```
+
+- Since it returns an array-like object, we need to use an index to manipulate a specific element.
+
+- Example (Selecting the first button and changing its background color):
+
+  ```javascript
+  buttons[0].style.backgroundColor = "blue";
+  ```
+
+## **4. Selecting Elements by ID**
+
+### **getElementById()**
+
+- Selects an element using its **ID**.
+
+- Unlike previous methods, this returns a **single element**, not an array.
+
+- Example:
+
+  ```javascript
+  let title = document.getElementById("title");
+  ```
+
+- We can manipulate this element directly without needing an index.
+
+- Example (Changing text content):
+
+  ```javascript
+  title.innerHTML = "Good Bye";
+  ```
+
+## **5. Using querySelector and querySelectorAll**
+
+### **querySelector()**
+
+- Selects **the first element** that matches a given CSS selector.
+
+- Example (Selecting `<h1>` using its tag name):
+
+  ```javascript
+  let heading = document.querySelector("h1");
+  ```
+
+- We can also use 
+
+  CSS-like selectors
+
+  :
+
+  - **By ID:** `querySelector("#title")`
+  - **By Class:** `querySelector(".btn")`
+  - **By Hierarchy:** `querySelector("ul li a")` (Selects `<a>` inside an `<li>` inside a `<ul>`)
+
+### **querySelectorAll()**
+
+- Selects **all elements** matching the given CSS selector.
+
+- Returns a **NodeList (array-like object)**.
+
+- Example:
+
+  ```javascript
+  let listItems = document.querySelectorAll("li.item");
+  ```
+
+- To manipulate a specific element, use 
+
+  indexing
+
+  :
+
+  ```javascript
+  listItems[1].style.fontWeight = "bold";
+  ```
+
+## **6. Comparison of Selection Methods**
+
+| Method                   | Returns                 | Selects By   | Needs Indexing? |
+| ------------------------ | ----------------------- | ------------ | --------------- |
+| getElementsByTagName()   | Collection (array-like) | Tag Name     | Yes             |
+| getElementsByClassName() | Collection (array-like) | Class Name   | Yes             |
+| getElementById()         | Single Element          | ID           | No              |
+| querySelector()          | First Matching Element  | CSS Selector | No              |
+| querySelectorAll()       | Collection (NodeList)   | CSS Selector | Yes             |
+
+## **7. Challenge: Changing the Google Link Color**
+
+### **Task:** Change the color of a specific Google link inside an `<li>`.
+
+### **Solution:**
+
+```javascript
+let googleLink = document.querySelector("li a");
+googleLink.style.color = "red";
+```
+
+### **Explanation:**
+
+- `querySelector("li a")` selects the **first anchor (`<a>`) inside an `<li>`**.
+- `style.color = "red";` changes the text color.
+- Selecting just `li` would not work since the `<a>` tag is a separate element.
+
+## **8. Best Practices for DOM Selection**
+
+- **Prefer querySelector/querySelectorAll** as they allow for more specific selection.
+- **Use getElementById for unique elements** like titles, forms, or buttons.
+- **Always check if you are working with a single element or a collection** to avoid errors.
+- **Use CSS selectors with querySelector/querySelectorAll** to target elements efficiently.
+
+------
+
+### **Conclusion**
+
+- JavaScript provides multiple ways to select and manipulate DOM elements.
+- Understanding how to use these methods effectively will help in dynamically modifying web pages.
+- Experiment with different selection methods to see whi
+
+# JavaScript DOM Selection & Manipulation Notes
+
+## Selecting Elements in the DOM
+
+### 1. `getElementsByTagName()`
+
+- Retrieves all elements with a specified tag name.
+
+- Returns a **collection (array-like object)**.
+
+- Example:
+
+  ```javascript
+  let listItems = document.getElementsByTagName("li");
+  console.log(listItems.length); // Outputs number of <li> elements
+  listItems[2].style.color = "purple"; // Changes the third list item’s color
+  ```
+
+- **Key Point:** Must use indexing (`[index]`) to target a specific element.
+
+### 2. `getElementsByClassName()`
+
+- Selects elements by **class name**.
+
+- Returns an **HTMLCollection (array-like object)**.
+
+- Example:
+
+  ```javascript
+  let buttons = document.getElementsByClassName("btn");
+  buttons[0].style.backgroundColor = "blue";
+  ```
+
+### 3. `getElementById()`
+
+- Selects a **single element** by its `id`.
+
+- Returns a **single element, not a collection**.
+
+- Example:
+
+  ```javascript
+  let title = document.getElementById("title");
+  title.innerHTML = "Good Bye"; // Changes the text inside the element
+  ```
+
+### 4. `querySelector()`
+
+- **More flexible**, allows selection using CSS-style selectors.
+
+- Returns **only the first matching element**.
+
+- Example:
+
+  ```javascript
+  document.querySelector("h1").style.color = "red";
+  document.querySelector(".btn").style.backgroundColor = "yellow";
+  ```
+
+- Supports complex queries:
+
+  ```javascript
+  document.querySelector("ul li a").style.color = "green"; // Selects <a> inside <li> inside <ul>
+  ```
+
+### 5. `querySelectorAll()`
+
+- Similar to `querySelector()`, but returns **all matching elements** as a **NodeList**.
+
+- Example:
+
+  ```javascript
+  let allItems = document.querySelectorAll("li.item");
+  allItems.forEach(item => item.style.color = "blue");
+  ```
+
+## Manipulating Elements with JavaScript
+
+### Changing CSS Styles
+
+- Access **style properties** using `.style`.
+
+- CSS property names change in JavaScript:
+
+  - **CSS:** `font-size: 20px;`
+  - **JavaScript:** `element.style.fontSize = "20px";`
+
+- Example:
+
+  ```javascript
+  document.querySelector("h1").style.fontSize = "10rem";
+  document.querySelector("button").style.backgroundColor = "yellow";
+  ```
+
+- Important Points:
+
+  - CamelCase replaces hyphens (`background-color` → `backgroundColor`).
+  - Values must be **strings**, even numbers (`padding: "7%"`).
+
+### Example: Changing an Anchor Tag’s Color
+
+- **Challenge:** Change Google link color to red.
+
+- Solution:
+
+  ```javascript
+  document.querySelector("li a").style.color = "red";
+  ```
+
+  - Selects `<a>` inside `<li>`.
+
+## Best Practices for Element Selection
+
+- **Use `querySelector` & `querySelectorAll`** for flexibility and specific targeting.
+- **Use `getElementById`** for unique elements (more efficient).
+- **Avoid `getElementsByTagName` and `getElementsByClassName`** unless necessary.
+
+## Next Steps
+
+- Learn how to **toggle CSS styles dynamically** without modifying styles directly in JavaScript.
