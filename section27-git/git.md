@@ -2,16 +2,16 @@
 
   ## Table of Contents
 
-  - [Basic Git Workflow](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#basic-git-workflow)
-  - [Setting Up a Repository](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#setting-up-a-repository)
-  - [Working with Changes](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#working-with-changes)
-  - [Undoing Changes](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#undoing-changes)
-  - [Remote Repositories](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#remote-repositories)
-  - [Using .gitignore](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#using-gitignore)
-  - [Cloning Repositories](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#cloning-repositories)
-  - [Branching and Merging](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#branching-and-merging)
-  - [Forking and Collaboration](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#forking-and-collaboration)
-  - [Command Reference](https://claude.ai/chat/6f65de8f-3bda-4ba1-924b-697c997861f8#command-reference)
+  - [Basic Git Workflow]
+  - [Setting Up a Repository]
+  - [Working with Changes
+  - [Undoing Changes]
+  - [Remote Repositories]
+  - [Using .gitignore]
+  - [Cloning Repositories]
+  - [Branching and Merging]
+  - [Forking and Collaboration]
+  - [Command Reference]
 
   ## Basic Git Workflow
 
